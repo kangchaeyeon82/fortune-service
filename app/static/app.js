@@ -1,4 +1,4 @@
-// 화면: 입력 폼 -> /api/fortune -> analyze()(interpret.js) -> 탭 3개 + 해석 시트
+// 화면: 입력 폼 -> getFortune()(api.js, 포스텔러 직접 호출) -> analyze()(interpret.js) -> 탭 3개 + 해석 시트
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const esc = (s) =>
@@ -36,11 +36,10 @@ f.unknown_time.addEventListener("change", () => (f.hour.disabled = f.minute.disa
 const cityInput = $("#city-input");
 const cityResults = $("#city-results");
 let cityTimer;
-async function searchCities(q) {
+async function showCityResults(q) {
   let list = [];
   try {
-    const res = await fetch(`/api/cities?q=${encodeURIComponent(q)}`);
-    if (res.ok) list = await res.json();
+    list = await searchCities(q); // api.js
   } catch {}
   cityResults.innerHTML = list.length
     ? list.map((c) => `<li><button type="button" data-id="${c.id}" data-name="${esc(c.name)}">${esc(c.name)}</button></li>`).join("")
@@ -50,9 +49,9 @@ async function searchCities(q) {
 cityInput.addEventListener("input", () => {
   clearTimeout(cityTimer);
   const q = cityInput.value.trim();
-  cityTimer = setTimeout(() => searchCities(q), q ? 300 : 0);
+  cityTimer = setTimeout(() => showCityResults(q), q ? 300 : 0);
 });
-cityInput.addEventListener("focus", () => !cityInput.value.trim() && searchCities(""));
+cityInput.addEventListener("focus", () => !cityInput.value.trim() && showCityResults(""));
 cityResults.addEventListener("click", (e) => {
   const b = e.target.closest("button[data-id]");
   if (!b) return;
@@ -80,9 +79,9 @@ form.addEventListener("submit", (e) => {
     location_id: +f.location_id.value,
     location_name: f.location_name.value,
   };
-  load(() => fetch("/api/fortune", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }));
+  load(() => getFortune(body)); // api.js
 });
-$("#sample-btn").addEventListener("click", () => load(() => fetch("/api/fortune/sample")));
+$("#sample-btn").addEventListener("click", () => load(getSample));
 
 async function load(request) {
   const btn = $("#submit-btn");
@@ -90,20 +89,13 @@ async function load(request) {
   btn.disabled = true;
   btn.textContent = "풀이하는 중…";
   try {
-    const res = await request();
-    const data = await res.json();
-    if (!res.ok) throw new Error(errorMessage(data));
-    render(data);
+    render(await request());
   } catch (err) {
     showError(err.message || "결과를 불러오지 못했어요.");
   } finally {
     btn.disabled = false;
     btn.textContent = "사주 풀이 보기";
   }
-}
-function errorMessage(data) {
-  if (Array.isArray(data.detail)) return data.detail.map((d) => d.msg.replace(/^Value error, /, "")).join(" / ");
-  return data.detail || "결과를 불러오지 못했어요. 입력값을 확인해 주세요.";
 }
 function showError(msg) {
   const el = $("#form-error");

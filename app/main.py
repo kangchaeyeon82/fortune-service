@@ -1,7 +1,8 @@
-"""운세 서비스 API 서버.
+"""로컬 실행용 서버: 화면(app/static)을 그대로 보여주고, 같은 기능의 API(/api/...)도 제공한다.
+화면 자체는 브라우저에서 포스텔러를 직접 호출하므로(api.js) GitHub Pages처럼 서버 없이도 동작한다.
 
-실행:  uvicorn app.main:app --reload   (fortune-service 폴더에서)
-문서:  http://127.0.0.1:8000/docs
+실행:  python -m uvicorn app.main:app   (fortune-service 폴더에서)
+화면:  http://127.0.0.1:8000    API 문서: http://127.0.0.1:8000/docs
 """
 import datetime as dt
 import json
@@ -10,7 +11,6 @@ from pathlib import Path
 from typing import Literal, Optional
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
@@ -24,12 +24,6 @@ STATIC = Path(__file__).resolve().parent / "static"
 
 app = FastAPI(title="Fortune Service API", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-app.mount("/static", StaticFiles(directory=STATIC), name="static")
-
-
-@app.get("/", include_in_schema=False)
-def index():
-    return FileResponse(STATIC / "index.html")
 
 
 class FortuneRequest(BaseModel):
@@ -121,3 +115,7 @@ def _load_sample():
     data["summary"] = data["sections"]["사주명식"].get("profile")
     fill_current_year(data["sections"])
     return data
+
+
+# 화면: GitHub Pages와 같은 상대 경로 구조 그대로 제공 (API 라우트 뒤에 둬야 함)
+app.mount("/", StaticFiles(directory=STATIC, html=True), name="site")

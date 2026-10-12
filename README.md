@@ -1,6 +1,11 @@
 # fortune-service
 
-포스텔러 만세력 데이터를 활용한 사주 분석 사이트 (수업 프로젝트)
+포스텔러 만세력 데이터를 활용한 사주 풀이 사이트 (수업 프로젝트)
+
+**바로 보기: https://kangchaeyeon82.github.io/fortune-service/**
+
+화면은 브라우저에서 포스텔러 API를 직접 호출하므로(`app/static/api.js`) 서버 없이 GitHub Pages에서 동작한다.
+`main` 브랜치에 push하면 GitHub Actions(`.github/workflows/pages.yml`)가 `app/static` 폴더를 자동 배포한다.
 
 ## 폴더 구조
 ```
@@ -23,8 +28,10 @@ fortune-service/
 │   ├── main.py             #   API 서버 (FastAPI)
 │   ├── forceteller.py      #   포스텔러 데이터 요청 모듈
 │   └── static/             #   화면
+│       ├── api.js          #     포스텔러 호출 · 도시 검색 · 날짜 검증 · 오늘 일진 계산
 │       ├── interpret.js    #     풀이 엔진: 만세력 데이터 → 운세 점수·문장
-│       └── app.js 등       #     입력 폼 + 풀이 화면
+│       ├── app.js          #     입력 폼 + 탭 3개 + 해석 시트
+│       └── sample.json     #     '예시로 둘러보기' 데이터
 └── docs/                   # 회의록, 발표자료 등
 ```
 
@@ -33,12 +40,12 @@ fortune-service/
 python crawler/forceteller_crawl.py --birthday 1990-01-01 --time 12:00 --gender F --out data/raw/test.json
 ```
 
-## 서버 실행
+## 내 컴퓨터에서 실행 (선택)
 ```
 pip install -r requirements.txt
 python -m uvicorn app.main:app --reload
 ```
-- 서비스 화면: http://127.0.0.1:8000
+- 화면: http://127.0.0.1:8000 (GitHub Pages와 같은 화면)
 - API 문서(직접 눌러서 테스트 가능): http://127.0.0.1:8000/docs
 
 | 메서드 | 주소 | 설명 |
