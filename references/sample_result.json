@@ -1,0 +1,2757 @@
+{
+  "profile": {
+    "name": "",
+    "gender": "F",
+    "birthday": "1990-01-01",
+    "birthtime": "12:00",
+    "calendar": "S",
+    "hmUnsure": false,
+    "midnightAdjust": false,
+    "locationId": 1835848,
+    "locationName": "서울특별시",
+    "year": 1990,
+    "month": 1,
+    "day": 1,
+    "hour": 12,
+    "min": 0,
+    "saved": false,
+    "_합보정": false,
+    "_조후궁성보정": false
+  },
+  "landing": "# 모두를 위한 사주풀이, 포스텔러 만세력\n\n서머타임은 물론 지역에 따른 1~2분의 미세 시차까지\n보정합니다. 포스텔러 만세력을 통해 다양한 방식으로\n사주 오행을 분석해보세요.\n\n![](https://static.forceteller.com/images/pro/pro_intro_2.webp)\n\n2.2 업데이트\n\n- 일진 달력이 추가되었습니다. 오늘의 날짜를\n\n12간지로 알 수 있습니다.\n- 나의 일주 천간을 기준으로 오행의 흐름을 볼 수 있는 오행표가 추가되었습니다.\n- 12간지 시간표가 추가되었습니다.\n- 길성과 흉성을 확인하기 편하도록 별도의 영역으로 분리했습니다.\n- 사주풀이 자세히 보기가 펼침 상태로 제공됩니다.\n\n시작하기",
+  "sections": {
+    "사주명식": {
+      "bitmap": 84673054,
+      "_기본명식": {
+        "_세차": {
+          "_천간": {
+            "id": 5,
+            "name": "기",
+            "chinese": "己",
+            "_음양": {
+              "id": 0,
+              "name": "음",
+              "chinese": "음"
+            },
+            "_오행": {
+              "id": 2,
+              "name": "토",
+              "chinese": "土"
+            },
+            "_십성": {
+              "id": 3,
+              "name": "상관",
+              "chinese": "傷官"
+            }
+          },
+          "_지지": {
+            "id": 5,
+            "name": "사",
+            "chinese": "巳",
+            "_음양": {
+              "id": 1,
+              "name": "양",
+              "chinese": "양"
+            },
+            "_오행": {
+              "id": 1,
+              "name": "화",
+              "chinese": "火"
+            },
+            "_십성": {
+              "id": 0,
+              "name": "비견",
+              "chinese": "比肩"
+            }
+          },
+          "_지장간": [
+            {
+              "id": 2,
+              "name": "무",
+              "chinese": "戊"
+            },
+            {
+              "id": 3,
+              "name": "경",
+              "chinese": "庚"
+            },
+            {
+              "id": 1,
+              "name": "병",
+              "chinese": "丙"
+            }
+          ],
+          "_운성": {
+            "id": 3,
+            "name": "건록",
+            "chinese": "建祿"
+          }
+        },
+        "_월건": {
+          "_천간": {
+            "id": 2,
+            "name": "병",
+            "chinese": "丙",
+            "_음양": {
+              "id": 1,
+              "name": "양",
+              "chinese": "양"
+            },
+            "_오행": {
+              "id": 1,
+              "name": "화",
+              "chinese": "火"
+            },
+            "_십성": {
+              "id": 0,
+              "name": "비견",
+              "chinese": "比肩"
+            }
+          },
+          "_지지": {
+            "id": 0,
+            "name": "자",
+            "chinese": "子",
+            "_음양": {
+              "id": 0,
+              "name": "음",
+              "chinese": "음"
+            },
+            "_오행": {
+              "id": 4,
+              "name": "수",
+              "chinese": "水"
+            },
+            "_십성": {
+              "id": 7,
+              "name": "정관",
+              "chinese": "正官"
+            }
+          },
+          "_지장간": [
+            {
+              "id": 4,
+              "name": "임",
+              "chinese": "壬"
+            },
+            {
+              "id": 4,
+              "name": "계",
+              "chinese": "癸"
+            }
+          ],
+          "_운성": {
+            "id": 10,
+            "name": "태",
+            "chinese": "胎"
+          }
+        },
+        "_일진": {
+          "_천간": {
+            "id": 2,
+            "name": "병",
+            "chinese": "丙",
+            "_음양": {
+              "id": 1,
+              "name": "양",
+              "chinese": "양"
+            },
+            "_오행": {
+              "id": 1,
+              "name": "화",
+              "chinese": "火"
+            },
+            "_십성": {
+              "id": 0,
+              "name": "비견",
+              "chinese": "比肩"
+            }
+          },
+          "_지지": {
+            "id": 2,
+            "name": "인",
+            "chinese": "寅",
+            "_음양": {
+              "id": 1,
+              "name": "양",
+              "chinese": "양"
+            },
+            "_오행": {
+              "id": 0,
+              "name": "목",
+              "chinese": "木"
+            },
+            "_십성": {
+              "id": 8,
+              "name": "편인",
+              "chinese": "偏印"
+            }
+          },
+          "_지장간": [
+            {
+              "id": 2,
+              "name": "무",
+              "chinese": "戊"
+            },
+            {
+              "id": 1,
+              "name": "병",
+              "chinese": "丙"
+            },
+            {
+              "id": 0,
+              "name": "갑",
+              "chinese": "甲"
+            }
+          ],
+          "_운성": {
+            "id": 0,
+            "name": "장생",
+            "chinese": "長生"
+          }
+        },
+        "_시진": {
+          "_천간": {
+            "id": 0,
+            "name": "갑",
+            "chinese": "甲",
+            "_음양": {
+              "id": 1,
+              "name": "양",
+              "chinese": "양"
+            },
+            "_오행": {
+              "id": 0,
+              "name": "목",
+              "chinese": "木"
+            },
+            "_십성": {
+              "id": 8,
+              "name": "편인",
+              "chinese": "偏印"
+            }
+          },
+          "_지지": {
+            "id": 6,
+            "name": "오",
+            "chinese": "午",
+            "_음양": {
+              "id": 0,
+              "name": "음",
+              "chinese": "음"
+            },
+            "_오행": {
+              "id": 1,
+              "name": "화",
+              "chinese": "火"
+            },
+            "_십성": {
+              "id": 1,
+              "name": "겁재",
+              "chinese": "劫財"
+            }
+          },
+          "_지장간": [
+            {
+              "id": 1,
+              "name": "병",
+              "chinese": "丙"
+            },
+            {
+              "id": 2,
+              "name": "기",
+              "chinese": "己"
+            },
+            {
+              "id": 1,
+              "name": "정",
+              "chinese": "丁"
+            }
+          ],
+          "_운성": {
+            "id": 4,
+            "name": "제왕",
+            "chinese": "帝旺"
+          }
+        }
+      },
+      "_신살": {
+        "_세차": {
+          "id": 11,
+          "name": "망신살",
+          "chinese": ""
+        },
+        "_월건": {
+          "id": 3,
+          "name": "육해살",
+          "chinese": ""
+        },
+        "_일진": {
+          "id": 5,
+          "name": "겁살",
+          "chinese": ""
+        },
+        "_시진": {
+          "id": 9,
+          "name": "년살",
+          "chinese": ""
+        }
+      },
+      "profile": {
+        "index": 2,
+        "avatar": "https://static.forceteller.com/images/animal/v5/circle_colored_2.png",
+        "sexagenaryCycle": "병인(붉은 호랑이)",
+        "sunBirth": "1990/01/01 12:00",
+        "lunBirth": "(평달) 1989/12/05 12:00",
+        "adjustedBirth": "1990/01/01 11:27",
+        "location": "서울특별시",
+        "adjusted": "지역시 -33분"
+      }
+    },
+    "오행십성": {
+      "_오행": [
+        {
+          "element": {
+            "id": 0,
+            "name": "목",
+            "chinese": "木"
+          },
+          "point": 27.5,
+          "percent": 25.0,
+          "description": "발달"
+        },
+        {
+          "element": {
+            "id": 1,
+            "name": "화",
+            "chinese": "火"
+          },
+          "point": 55.0,
+          "percent": 50.0,
+          "description": "과다"
+        },
+        {
+          "element": {
+            "id": 2,
+            "name": "토",
+            "chinese": "土"
+          },
+          "point": 13.75,
+          "percent": 12.5,
+          "description": "적정"
+        },
+        {
+          "element": {
+            "id": 3,
+            "name": "금",
+            "chinese": "金"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": "부족"
+        },
+        {
+          "element": {
+            "id": 4,
+            "name": "수",
+            "chinese": "水"
+          },
+          "point": 13.75,
+          "percent": 12.5,
+          "description": "적정"
+        }
+      ],
+      "_십성": [
+        {
+          "element": {
+            "id": 9,
+            "name": "정인",
+            "chinese": "正印"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 8,
+            "name": "편인",
+            "chinese": "偏印"
+          },
+          "point": 27.5,
+          "percent": 25.0,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 1,
+            "name": "겁재",
+            "chinese": "劫財"
+          },
+          "point": 13.75,
+          "percent": 12.5,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 0,
+            "name": "비견",
+            "chinese": "比肩"
+          },
+          "point": 41.25,
+          "percent": 37.5,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 3,
+            "name": "상관",
+            "chinese": "傷官"
+          },
+          "point": 13.75,
+          "percent": 12.5,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 2,
+            "name": "식신",
+            "chinese": "食神"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 5,
+            "name": "정재",
+            "chinese": "正財"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 4,
+            "name": "편재",
+            "chinese": "偏財"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 7,
+            "name": "정관",
+            "chinese": "正官"
+          },
+          "point": 13.75,
+          "percent": 12.5,
+          "description": ""
+        },
+        {
+          "element": {
+            "id": 6,
+            "name": "편관",
+            "chinese": "偏官"
+          },
+          "point": 0.0,
+          "percent": 0.0,
+          "description": ""
+        }
+      ]
+    },
+    "신강신약": {
+      "_득령": false,
+      "_득지": true,
+      "_득시": true,
+      "_득세": true,
+      "index": 2,
+      "name": "신강"
+    },
+    "용신": {
+      "_용신들": {
+        "억부용신": [
+          {
+            "id": 4,
+            "name": "수",
+            "chinese": "水"
+          }
+        ]
+      }
+    },
+    "대운_연운_월운": {
+      "_대운수": 2,
+      "_대운간지": "병자",
+      "_대운": [
+        {
+          "_간지": {
+            "_천간": {
+              "id": 3,
+              "name": "정",
+              "chinese": "丁",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지지": {
+              "id": 1,
+              "name": "축",
+              "chinese": "丑",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 11,
+              "name": "양",
+              "chinese": "養"
+            }
+          },
+          "age": 2,
+          "year": 1990,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 4,
+              "name": "무",
+              "chinese": "戊",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지지": {
+              "id": 2,
+              "name": "인",
+              "chinese": "寅",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              }
+            ],
+            "_운성": {
+              "id": 0,
+              "name": "장생",
+              "chinese": "長生"
+            }
+          },
+          "age": 12,
+          "year": 2000,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 5,
+              "name": "기",
+              "chinese": "己",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지지": {
+              "id": 3,
+              "name": "묘",
+              "chinese": "卯",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              }
+            ],
+            "_운성": {
+              "id": 1,
+              "name": "목욕",
+              "chinese": "沐浴"
+            }
+          },
+          "age": 22,
+          "year": 2010,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 6,
+              "name": "경",
+              "chinese": "庚",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지지": {
+              "id": 4,
+              "name": "진",
+              "chinese": "辰",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              }
+            ],
+            "_운성": {
+              "id": 2,
+              "name": "관대",
+              "chinese": "冠帶"
+            }
+          },
+          "age": 32,
+          "year": 2020,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 7,
+              "name": "신",
+              "chinese": "辛",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지지": {
+              "id": 5,
+              "name": "사",
+              "chinese": "巳",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              }
+            ],
+            "_운성": {
+              "id": 3,
+              "name": "건록",
+              "chinese": "建祿"
+            }
+          },
+          "age": 42,
+          "year": 2030,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 8,
+              "name": "임",
+              "chinese": "壬",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 6,
+                "name": "편관",
+                "chinese": "偏官"
+              }
+            },
+            "_지지": {
+              "id": 6,
+              "name": "오",
+              "chinese": "午",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              },
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              }
+            ],
+            "_운성": {
+              "id": 4,
+              "name": "제왕",
+              "chinese": "帝旺"
+            }
+          },
+          "age": 52,
+          "year": 2040,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 9,
+              "name": "계",
+              "chinese": "癸",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 7,
+                "name": "정관",
+                "chinese": "正官"
+              }
+            },
+            "_지지": {
+              "id": 7,
+              "name": "미",
+              "chinese": "未",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 5,
+              "name": "쇠",
+              "chinese": "衰"
+            }
+          },
+          "age": 62,
+          "year": 2050,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 0,
+              "name": "갑",
+              "chinese": "甲",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지지": {
+              "id": 8,
+              "name": "신",
+              "chinese": "申",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              }
+            ],
+            "_운성": {
+              "id": 6,
+              "name": "병",
+              "chinese": "病"
+            }
+          },
+          "age": 72,
+          "year": 2060,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 1,
+              "name": "을",
+              "chinese": "乙",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지지": {
+              "id": 9,
+              "name": "유",
+              "chinese": "酉",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              }
+            ],
+            "_운성": {
+              "id": 7,
+              "name": "사",
+              "chinese": "死"
+            }
+          },
+          "age": 82,
+          "year": 2070,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 2,
+              "name": "병",
+              "chinese": "丙",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지지": {
+              "id": 10,
+              "name": "술",
+              "chinese": "戌",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              },
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              },
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              }
+            ],
+            "_운성": {
+              "id": 8,
+              "name": "묘",
+              "chinese": "墓"
+            }
+          },
+          "age": 92,
+          "year": 2080,
+          "month": 1
+        }
+      ],
+      "_연운": [
+        {
+          "_간지": {
+            "_천간": {
+              "id": 6,
+              "name": "경",
+              "chinese": "庚",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지지": {
+              "id": 0,
+              "name": "자",
+              "chinese": "子",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 7,
+                "name": "정관",
+                "chinese": "正官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              },
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              }
+            ],
+            "_운성": {
+              "id": 10,
+              "name": "태",
+              "chinese": "胎"
+            }
+          },
+          "age": 32,
+          "year": 2020,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 7,
+              "name": "신",
+              "chinese": "辛",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지지": {
+              "id": 1,
+              "name": "축",
+              "chinese": "丑",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 11,
+              "name": "양",
+              "chinese": "養"
+            }
+          },
+          "age": 33,
+          "year": 2021,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 8,
+              "name": "임",
+              "chinese": "壬",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 6,
+                "name": "편관",
+                "chinese": "偏官"
+              }
+            },
+            "_지지": {
+              "id": 2,
+              "name": "인",
+              "chinese": "寅",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              }
+            ],
+            "_운성": {
+              "id": 0,
+              "name": "장생",
+              "chinese": "長生"
+            }
+          },
+          "age": 34,
+          "year": 2022,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 9,
+              "name": "계",
+              "chinese": "癸",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 7,
+                "name": "정관",
+                "chinese": "正官"
+              }
+            },
+            "_지지": {
+              "id": 3,
+              "name": "묘",
+              "chinese": "卯",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              }
+            ],
+            "_운성": {
+              "id": 1,
+              "name": "목욕",
+              "chinese": "沐浴"
+            }
+          },
+          "age": 35,
+          "year": 2023,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 0,
+              "name": "갑",
+              "chinese": "甲",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지지": {
+              "id": 4,
+              "name": "진",
+              "chinese": "辰",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              }
+            ],
+            "_운성": {
+              "id": 2,
+              "name": "관대",
+              "chinese": "冠帶"
+            }
+          },
+          "age": 36,
+          "year": 2024,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 1,
+              "name": "을",
+              "chinese": "乙",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지지": {
+              "id": 5,
+              "name": "사",
+              "chinese": "巳",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              }
+            ],
+            "_운성": {
+              "id": 3,
+              "name": "건록",
+              "chinese": "建祿"
+            }
+          },
+          "age": 37,
+          "year": 2025,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 2,
+              "name": "병",
+              "chinese": "丙",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지지": {
+              "id": 6,
+              "name": "오",
+              "chinese": "午",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              },
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              }
+            ],
+            "_운성": {
+              "id": 4,
+              "name": "제왕",
+              "chinese": "帝旺"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 3,
+              "name": "정",
+              "chinese": "丁",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지지": {
+              "id": 7,
+              "name": "미",
+              "chinese": "未",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 5,
+              "name": "쇠",
+              "chinese": "衰"
+            }
+          },
+          "age": 39,
+          "year": 2027,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 4,
+              "name": "무",
+              "chinese": "戊",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지지": {
+              "id": 8,
+              "name": "신",
+              "chinese": "申",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              }
+            ],
+            "_운성": {
+              "id": 6,
+              "name": "병",
+              "chinese": "病"
+            }
+          },
+          "age": 40,
+          "year": 2028,
+          "month": 1
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 5,
+              "name": "기",
+              "chinese": "己",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지지": {
+              "id": 9,
+              "name": "유",
+              "chinese": "酉",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              }
+            ],
+            "_운성": {
+              "id": 7,
+              "name": "사",
+              "chinese": "死"
+            }
+          },
+          "age": 41,
+          "year": 2029,
+          "month": 1
+        }
+      ],
+      "_월운": [
+        {
+          "_간지": {
+            "_천간": {
+              "id": 6,
+              "name": "경",
+              "chinese": "庚",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지지": {
+              "id": 2,
+              "name": "인",
+              "chinese": "寅",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              }
+            ],
+            "_운성": {
+              "id": 0,
+              "name": "장생",
+              "chinese": "長生"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 2
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 7,
+              "name": "신",
+              "chinese": "辛",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지지": {
+              "id": 3,
+              "name": "묘",
+              "chinese": "卯",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              }
+            ],
+            "_운성": {
+              "id": 1,
+              "name": "목욕",
+              "chinese": "沐浴"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 3
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 8,
+              "name": "임",
+              "chinese": "壬",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 6,
+                "name": "편관",
+                "chinese": "偏官"
+              }
+            },
+            "_지지": {
+              "id": 4,
+              "name": "진",
+              "chinese": "辰",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              }
+            ],
+            "_운성": {
+              "id": 2,
+              "name": "관대",
+              "chinese": "冠帶"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 4
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 9,
+              "name": "계",
+              "chinese": "癸",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 7,
+                "name": "정관",
+                "chinese": "正官"
+              }
+            },
+            "_지지": {
+              "id": 5,
+              "name": "사",
+              "chinese": "巳",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              }
+            ],
+            "_운성": {
+              "id": 3,
+              "name": "건록",
+              "chinese": "建祿"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 5
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 0,
+              "name": "갑",
+              "chinese": "甲",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 8,
+                "name": "편인",
+                "chinese": "偏印"
+              }
+            },
+            "_지지": {
+              "id": 6,
+              "name": "오",
+              "chinese": "午",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "병",
+                "chinese": "丙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              },
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              }
+            ],
+            "_운성": {
+              "id": 4,
+              "name": "제왕",
+              "chinese": "帝旺"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 6
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 1,
+              "name": "을",
+              "chinese": "乙",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 0,
+                "name": "목",
+                "chinese": "木"
+              },
+              "_십성": {
+                "id": 9,
+                "name": "정인",
+                "chinese": "正印"
+              }
+            },
+            "_지지": {
+              "id": 7,
+              "name": "미",
+              "chinese": "未",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              },
+              {
+                "id": 0,
+                "name": "을",
+                "chinese": "乙"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 5,
+              "name": "쇠",
+              "chinese": "衰"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 7
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 2,
+              "name": "병",
+              "chinese": "丙",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 0,
+                "name": "비견",
+                "chinese": "比肩"
+              }
+            },
+            "_지지": {
+              "id": 8,
+              "name": "신",
+              "chinese": "申",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              },
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              }
+            ],
+            "_운성": {
+              "id": 6,
+              "name": "병",
+              "chinese": "病"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 8
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 3,
+              "name": "정",
+              "chinese": "丁",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 1,
+                "name": "화",
+                "chinese": "火"
+              },
+              "_십성": {
+                "id": 1,
+                "name": "겁재",
+                "chinese": "劫財"
+              }
+            },
+            "_지지": {
+              "id": 9,
+              "name": "유",
+              "chinese": "酉",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 3,
+                "name": "경",
+                "chinese": "庚"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              }
+            ],
+            "_운성": {
+              "id": 7,
+              "name": "사",
+              "chinese": "死"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 9
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 4,
+              "name": "무",
+              "chinese": "戊",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지지": {
+              "id": 10,
+              "name": "술",
+              "chinese": "戌",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 2,
+                "name": "식신",
+                "chinese": "食神"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              },
+              {
+                "id": 1,
+                "name": "정",
+                "chinese": "丁"
+              },
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              }
+            ],
+            "_운성": {
+              "id": 8,
+              "name": "묘",
+              "chinese": "墓"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 10
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 5,
+              "name": "기",
+              "chinese": "己",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지지": {
+              "id": 11,
+              "name": "해",
+              "chinese": "亥",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 6,
+                "name": "편관",
+                "chinese": "偏官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 2,
+                "name": "무",
+                "chinese": "戊"
+              },
+              {
+                "id": 0,
+                "name": "갑",
+                "chinese": "甲"
+              },
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              }
+            ],
+            "_운성": {
+              "id": 9,
+              "name": "절",
+              "chinese": "絶"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 11
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 6,
+              "name": "경",
+              "chinese": "庚",
+              "_음양": {
+                "id": 1,
+                "name": "양",
+                "chinese": "양"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 4,
+                "name": "편재",
+                "chinese": "偏財"
+              }
+            },
+            "_지지": {
+              "id": 0,
+              "name": "자",
+              "chinese": "子",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 4,
+                "name": "수",
+                "chinese": "水"
+              },
+              "_십성": {
+                "id": 7,
+                "name": "정관",
+                "chinese": "正官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 4,
+                "name": "임",
+                "chinese": "壬"
+              },
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              }
+            ],
+            "_운성": {
+              "id": 10,
+              "name": "태",
+              "chinese": "胎"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 12
+        },
+        {
+          "_간지": {
+            "_천간": {
+              "id": 7,
+              "name": "신",
+              "chinese": "辛",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 3,
+                "name": "금",
+                "chinese": "金"
+              },
+              "_십성": {
+                "id": 5,
+                "name": "정재",
+                "chinese": "正財"
+              }
+            },
+            "_지지": {
+              "id": 1,
+              "name": "축",
+              "chinese": "丑",
+              "_음양": {
+                "id": 0,
+                "name": "음",
+                "chinese": "음"
+              },
+              "_오행": {
+                "id": 2,
+                "name": "토",
+                "chinese": "土"
+              },
+              "_십성": {
+                "id": 3,
+                "name": "상관",
+                "chinese": "傷官"
+              }
+            },
+            "_지장간": [
+              {
+                "id": 4,
+                "name": "계",
+                "chinese": "癸"
+              },
+              {
+                "id": 3,
+                "name": "신",
+                "chinese": "辛"
+              },
+              {
+                "id": 2,
+                "name": "기",
+                "chinese": "己"
+              }
+            ],
+            "_운성": {
+              "id": 11,
+              "name": "양",
+              "chinese": "養"
+            }
+          },
+          "age": 38,
+          "year": 2026,
+          "month": 1
+        }
+      ]
+    },
+    "사주풀이": {
+      "천간합": [
+        {
+          "title": "천간에 <b>갑기합</b>이 있어요.",
+          "subtitle": "",
+          "list": [
+            3,
+            0
+          ]
+        }
+      ],
+      "지지육합": [],
+      "지지삼합": [
+        {
+          "title": "지지에 <b>인오반합</b>이 있어요.",
+          "subtitle": "반합은 삼합에 들어가는 세가지 지지 중 두가지만 있는 경우를 말합니다.",
+          "list": [
+            2,
+            3
+          ]
+        }
+      ],
+      "지지방합": [
+        {
+          "title": "지지에 <b>사오반합</b>이 있어요.",
+          "subtitle": "반합은 방합에 들어가는 세가지 지지 중 두가지만 있는 경우를 말합니다.",
+          "list": [
+            0,
+            3
+          ]
+        }
+      ],
+      "천간충": [],
+      "지지충": [
+        {
+          "title": "지지에 <b>자오충</b>이 있어요.",
+          "subtitle": "",
+          "list": [
+            1,
+            3
+          ]
+        }
+      ],
+      "공망": [],
+      "형": [],
+      "파": [],
+      "해": [
+        {
+          "title": "사인해가 있어요.",
+          "subtitle": "",
+          "list": [
+            0,
+            2
+          ]
+        }
+      ],
+      "원진": []
+    },
+    "길흉성": {
+      "길흉": {
+        "0": {
+          "1": [
+            "천덕귀인",
+            "정록",
+            "역마살"
+          ]
+        },
+        "2": {
+          "1": [
+            "학당귀인",
+            "문곡귀인",
+            "홍염살",
+            "역마살"
+          ]
+        },
+        "1": {
+          "1": [
+            "도화살"
+          ]
+        },
+        "3": {
+          "1": [
+            "도화살",
+            "현침살",
+            "양인살"
+          ],
+          "0": [
+            "현침살"
+          ]
+        }
+      }
+    }
+  }
+}
