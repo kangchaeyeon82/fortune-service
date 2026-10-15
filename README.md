@@ -26,6 +26,19 @@
    - 학업운은 인성·관성 기운과 문창·학당귀인 같은 공부 별을 봅니다.
    - 올해 지지와 내 사주가 부딪히는지(충), 삼재인지도 계산합니다.
 
+## 연결된 외부 도구
+
+| 도구 | 어디에 쓰나 | 키·비용 | 사용하는 곳 |
+|---|---|---|---|
+| **포스텔러 만세력 API** (`api.forceteller.com`) | 사주팔자 · 오행·십신 · 신강신약 · 용신 · 대운·연운·월운 · 신살, 태어난 곳(도시) 검색, 날짜 검증 | 키 없음 · 무료 | `app/static/api.js`, `app/forceteller.py`, `crawler/` |
+| **Firecrawl** (`api.firecrawl.dev`) | 포스텔러 첫 화면을 수집하는 데만 사용. 웹사이트는 사용하지 않음 | `FIRECRAWL_API_KEY` 필요 (`.env`) | `crawler/forceteller_crawl.py` |
+| **GitHub Pages + GitHub Actions** | `main`에 push하면 `app/static` 폴더를 자동으로 배포 | 무료 (공개 저장소) | `.github/workflows/pages.yml` |
+| **jsDelivr CDN · Pretendard 글꼴** | 화면 글꼴 | 키 없음 · 무료 | `app/static/index.html` |
+| **FastAPI · Uvicorn · httpx** (파이썬 라이브러리) | 내 컴퓨터에서 서버로 실행할 때만 사용 | 무료 | `app/main.py`, `requirements.txt` |
+
+- AI API(Claude, ChatGPT 등)는 쓰지 않습니다. 풀이 문장과 점수는 모두 코드 안의 규칙으로 만듭니다.
+- API 키는 `.env` 파일에만 넣고, 이 파일은 GitHub에 올리지 않습니다(`.gitignore`). 형식은 `.env.example`을 참고하세요.
+
 ## 폴더 구조
 
 ```
