@@ -2,3 +2,6 @@
 data/raw/
 __pycache__/
 node_modules/
+
+# 개인 정보가 담긴 풀이 예시 (내 컴퓨터에만 보관)
+docs/references/saju-explain.md
