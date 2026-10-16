@@ -16,5 +16,5 @@
 - FastAPI: https://fastapi.tiangolo.com
 
 ## 4. AI에게 작업 시킬 때
-"references/ 폴더와 PLAN.md 를 먼저 읽고, 작업 순서 3번(서버)부터 진행해 줘" 처럼
+"docs/ 폴더(PLAN.md, references/) 를 먼저 읽고, 작업 순서 3번(서버)부터 진행해 줘" 처럼
 **계획서와 레퍼런스를 먼저 읽게** 하면 결과물이 훨씬 정확해짐.

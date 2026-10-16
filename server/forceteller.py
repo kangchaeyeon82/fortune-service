@@ -1,4 +1,4 @@
-"""포스텔러 만세력 API 클라이언트. 명세는 references/forceteller-api.md 참고."""
+"""포스텔러 만세력 API 클라이언트. 명세는 docs/references/forceteller-api.md 참고."""
 import asyncio
 import datetime as dt
 import json

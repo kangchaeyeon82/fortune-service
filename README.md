@@ -30,11 +30,11 @@
 
 | 도구 | 어디에 쓰나 | 키·비용 | 사용하는 곳 |
 |---|---|---|---|
-| **포스텔러 만세력 API** (`api.forceteller.com`) | 사주팔자 · 오행·십신 · 신강신약 · 용신 · 대운·연운·월운 · 신살, 태어난 곳(도시) 검색, 날짜 검증 | 키 없음 · 무료 | `app/static/api.js`, `app/forceteller.py`, `crawler/` |
+| **포스텔러 만세력 API** (`api.forceteller.com`) | 사주팔자 · 오행·십신 · 신강신약 · 용신 · 대운·연운·월운 · 신살, 태어난 곳(도시) 검색, 날짜 검증 | 키 없음 · 무료 | `web/js/api.js`, `server/forceteller.py`, `crawler/` |
 | **Firecrawl** (`api.firecrawl.dev`) | 포스텔러 첫 화면을 수집하는 데만 사용. 웹사이트는 사용하지 않음 | `FIRECRAWL_API_KEY` 필요 (`.env`) | `crawler/forceteller_crawl.py` |
-| **GitHub Pages + GitHub Actions** | `main`에 push하면 `app/static` 폴더를 자동으로 배포 | 무료 (공개 저장소) | `.github/workflows/pages.yml` |
-| **jsDelivr CDN · Pretendard 글꼴** | 화면 글꼴 | 키 없음 · 무료 | `app/static/index.html` |
-| **FastAPI · Uvicorn · httpx** (파이썬 라이브러리) | 내 컴퓨터에서 서버로 실행할 때만 사용 | 무료 | `app/main.py`, `requirements.txt` |
+| **GitHub Pages + GitHub Actions** | `main`에 push하면 `web` 폴더를 자동으로 배포 | 무료 (공개 저장소) | `.github/workflows/pages.yml` |
+| **jsDelivr CDN · Pretendard 글꼴** | 화면 글꼴 | 키 없음 · 무료 | `web/index.html` |
+| **FastAPI · Uvicorn · httpx** (파이썬 라이브러리) | 내 컴퓨터에서 서버로 실행할 때만 사용 | 무료 | `server/main.py`, `requirements.txt` |
 
 - AI API(Claude, ChatGPT 등)는 쓰지 않습니다. 풀이 문장과 점수는 모두 코드 안의 규칙으로 만듭니다.
 - API 키는 `.env` 파일에만 넣고, 이 파일은 GitHub에 올리지 않습니다(`.gitignore`). 형식은 `.env.example`을 참고하세요.
@@ -43,19 +43,26 @@
 
 ```
 fortune-service/
-├── app/static/            # 웹사이트 (GitHub Pages로 배포되는 폴더)
+├── web/                     # 웹사이트 (GitHub Pages로 배포되는 폴더)
 │   ├── index.html
-│   ├── style.css
-│   ├── api.js             #   포스텔러 호출 · 도시 검색 · 날짜 검증 · 일진 계산
-│   ├── interpret.js       #   풀이 엔진: 만세력 데이터 → 점수 · 해석 문장
-│   ├── app.js             #   입력 폼 · 탭 3개 · 해석 창
-│   └── sample.json        #   '예시로 둘러보기' 데이터
-├── app/main.py            # 내 컴퓨터에서 실행할 때 쓰는 서버 (선택)
-├── app/forceteller.py     #   서버용 포스텔러 연동 모듈
-├── crawler/               # 만세력 데이터 수집 스크립트
-├── references/            # 참고 자료: 포스텔러 API 정리, 데이터 구조, 샘플 데이터
-├── PLAN.md                # 기획서
-└── .github/workflows/     # main에 push하면 GitHub Pages 자동 배포
+│   ├── css/style.css
+│   ├── js/
+│   │   ├── api.js           #   포스텔러 호출 · 도시 검색 · 날짜 검증 · 일진 계산
+│   │   ├── interpret.js     #   풀이 엔진: 만세력 데이터 → 점수 · 해석 문장
+│   │   └── app.js           #   입력 폼 · 탭 3개 · 해석 창
+│   └── data/sample.json     #   '예시로 둘러보기' 데이터
+├── server/                  # 내 컴퓨터에서 실행할 때 쓰는 서버 (선택)
+│   ├── main.py              #   FastAPI 서버
+│   └── forceteller.py       #   서버용 포스텔러 연동 모듈
+├── crawler/                 # 만세력 데이터 수집 스크립트
+│   └── forceteller_crawl.py
+├── docs/                    # 기획 · 레퍼런스
+│   ├── PLAN.md              #   기획서
+│   └── references/          #   포스텔러 API 정리, 데이터 구조, 샘플 데이터, 참고 서비스
+├── data/raw/                # 수집 결과 저장 위치 (GitHub에 올리지 않음)
+├── .github/workflows/       # main에 push하면 GitHub Pages 자동 배포
+├── README.md
+└── requirements.txt
 ```
 
 ## 내 컴퓨터에서 실행하기 (선택)
@@ -64,7 +71,7 @@ fortune-service/
 
 ```
 pip install -r requirements.txt
-python -m uvicorn app.main:app
+python -m uvicorn server.main:app
 ```
 
 - 화면: http://127.0.0.1:8000
@@ -79,7 +86,7 @@ python crawler/forceteller_crawl.py --birthday 1990-01-01 --time 12:00 --gender 
 
 ## 배포
 
-`main` 브랜치에 push하면 GitHub Actions가 `app/static` 폴더를 GitHub Pages에 자동으로 배포합니다. 보통 30초 안에 끝납니다.
+`main` 브랜치에 push하면 GitHub Actions가 `web` 폴더를 GitHub Pages에 자동으로 배포합니다. 보통 30초 안에 끝납니다.
 
 ## 알아 둘 점
 

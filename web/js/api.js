@@ -1,6 +1,6 @@
 // 브라우저에서 포스텔러 만세력 API를 직접 호출한다 (서버 없이 GitHub Pages에서도 동작).
-// 포스텔러 API는 다른 사이트에서의 요청(CORS)을 허용한다. 명세: references/forceteller-api.md
-// app/forceteller.py(파이썬 서버)와 같은 동작을 한다.
+// 포스텔러 API는 다른 사이트에서의 요청(CORS)을 허용한다. 명세: docs/references/forceteller-api.md
+// server/forceteller.py(파이썬 서버)와 같은 동작을 한다.
 
 const FT_API = "https://api.forceteller.com";
 
@@ -147,7 +147,7 @@ async function getFortune(input) {
 
 // 예시 데이터 (sample.json)
 async function getSample() {
-  const data = await (await fetch("sample.json")).json();
+  const data = await (await fetch("data/sample.json")).json();
   const today = todaySection(data.sections);
   fillCurrentYear(data.sections, Number(today.date.slice(0, 4)));
   return { ...data, summary: data.sections["사주명식"].profile, today };

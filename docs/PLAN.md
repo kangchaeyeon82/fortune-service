@@ -33,8 +33,8 @@
 ## 6. 작업 순서
 1. [x] 데이터 확보 — 크롤러 작성, 샘플 결과 저장 (`references/sample_result.json`)
 2. [x] 데이터 구조 파악 — `references/data-schema.md` 확인
-3. [x] 서버: `/api/fortune` (입력 → 포스텔러 API → JSON 반환) — `app/main.py`
-4. [x] 화면: 입력 폼 + 결과 화면 — `app/static/` (http://127.0.0.1:8000)
+3. [x] 서버: `/api/fortune` (입력 → 포스텔러 API → JSON 반환) — `server/main.py`
+4. [x] 화면: 입력 폼 + 결과 화면 — `web/` (http://127.0.0.1:8000)
    - [x] 풀이 엔진 `interpret.js` — 규칙 기반 (AI·비용 없음)
      · 올해 기운이 용신이면 +, 용신을 극하거나 이미 넘치는 기운이면 −
      · 연애: 이성 인연 기운(남 재성 / 여 관성), 도화·홍염, 올해 지지와 일지(배우자 자리)의 합·충

@@ -1,4 +1,4 @@
-# main 브랜치에 push하면 app/static 폴더를 GitHub Pages로 배포
+# main 브랜치에 push하면 web 폴더를 GitHub Pages로 배포
 name: Deploy to GitHub Pages
 
 on:
@@ -26,6 +26,6 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: app/static
+          path: web
       - id: deployment
         uses: actions/deploy-pages@v4

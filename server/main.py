@@ -1,7 +1,7 @@
-"""로컬 실행용 서버: 화면(app/static)을 그대로 보여주고, 같은 기능의 API(/api/...)도 제공한다.
+"""로컬 실행용 서버: 화면(web/)을 그대로 보여주고, 같은 기능의 API(/api/...)도 제공한다.
 화면 자체는 브라우저에서 포스텔러를 직접 호출하므로(api.js) GitHub Pages처럼 서버 없이도 동작한다.
 
-실행:  python -m uvicorn app.main:app   (fortune-service 폴더에서)
+실행:  python -m uvicorn server.main:app   (fortune-service 폴더에서)
 화면:  http://127.0.0.1:8000    API 문서: http://127.0.0.1:8000/docs
 """
 import datetime as dt
@@ -19,8 +19,8 @@ from .forceteller import (DEFAULT_CITIES, ForcetellerError, build_profile, fetch
                           is_valid_date, search_cities, today_section)
 
 ROOT = Path(__file__).resolve().parent.parent
-SAMPLE = ROOT / "references" / "sample_result.json"
-STATIC = Path(__file__).resolve().parent / "static"
+SAMPLE = ROOT / "docs" / "references" / "sample_result.json"
+STATIC = ROOT / "web"
 
 app = FastAPI(title="Fortune Service API", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -103,7 +103,7 @@ async def fortune(req: FortuneRequest):
 
 @app.get("/api/fortune/sample")
 def fortune_sample():
-    """화면 개발용 샘플 (references/sample_result.json)."""
+    """화면 개발용 샘플 (docs/references/sample_result.json)."""
     data = _load_sample()
     return {**data, "today": today_section(data["sections"])}
 
