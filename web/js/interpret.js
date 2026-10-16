@@ -426,6 +426,7 @@ function analyze(data) {
 
     yearR = {
       year, ganji: Y.ganji, hanja: Y.hanja, name: `${ELEMENT_COLOR_WORD[Y.stemEl]} ${animal}의 해`,
+      stemG: Y.stemG, branchG: Y.branchG, stemEl: Y.stemEl, branchEl: Y.branchEl,
       value: totalValue, label: indexLabel(totalValue), text: totalText,
       fields, cautions, months, daeunNow: curDaeunIdx >= 0 ? daeun[curDaeunIdx] : null,
       firstDaeun: curDaeunIdx < 0 ? daeun[0] : null,
@@ -501,12 +502,14 @@ function analyze(data) {
     };
   }
 
-  return {
-    name: profile.name || "나", unknown,
+  const A = {
+    name: profile.name || "나", unknown, gender,
     pillars, me, elementRows, useful, excess, lacking, strength,
     tenGods, groupShare, guiin, sinsal, daeun,
     year: yearR, today: todayR, remedy,
   };
+  A.detail = analyzeDetail(A, data); // saju-explain 형식의 표 + 종합 해석
+  return A;
 }
 
 // ================= 탭하면 보여줄 해석 =================

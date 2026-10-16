@@ -223,30 +223,53 @@ function render(data) {
   if (now) now.parentElement.scrollLeft = now.offsetLeft - now.parentElement.offsetLeft - now.parentElement.clientWidth / 2 + now.clientWidth / 2;
 }
 
-// ---------- 탭 1: 내 사주 ----------
-function renderChart(A) {
-  const shown = [...A.pillars].reverse(); // 전통 표기: 시·일·월·년 (오른쪽이 년주)
-  const tile = (p, which) => {
-    if (p.unknown) return `<div class="ch empty"><span class="han">?</span><span class="kor">모름</span></div>`;
-    const c = p[which];
-    const tg = which === "stem" && p.idx === 2 ? "나" : c.tenGod;
-    return `<button type="button" class="ch" style="${elVar(c.el)}" ${tapAttr(() => explainChar(A, p, which))}>
-      <span class="han">${esc(c.chinese)}</span>
-      <span class="kor"><i class="dot"></i>${esc(c.name)} · ${esc(c.el)}</span>
-      <span class="tg">${esc(tg)}</span></button>`;
-  };
-  const palja = `
-    <div class="palja">
-      ${shown.map((p) => `<button type="button" class="col-head ${p.idx === 2 ? "me" : ""}" ${tapAttr(() => explainPillar(A, p))}>${p.label}</button>`).join("")}
-      ${shown.map((p) => tile(p, "stem")).join("")}
-      ${shown.map((p) => tile(p, "branch")).join("")}
-    </div>
-    <p class="palja-meta-label">12운성</p>
-    <div class="palja-meta" style="margin-top:0">${shown.map((p) => `<span>${p.unknown ? "-" : esc(p.unseong || "")}</span>`).join("")}</div>
-    <p class="footnote">일주의 위 글자가 '나'예요. 글자나 기둥 이름을 누르면 뜻을 알려 드려요.</p>`;
+// ---------- 탭 1: 내 사주 (saju-explain 형식: 표 → 상태 → 종합 해석) ----------
+const insight = (paras, title = "종합 해석") =>
+  `<div class="insight"><p class="insight-title">✦ ${esc(title)}</p>${paras.filter(Boolean).map((p) => `<p>${esc(p)}</p>`).join("")}</div>`;
+const table = (head, rows, cls = "") =>
+  `<div class="tbl-wrap"><table class="tbl ${cls}">${head ? `<thead><tr>${head.map((h) => `<th scope="col">${h}</th>`).join("")}</tr></thead>` : ""}<tbody>${rows.join("")}</tbody></table></div>`;
+const elDot = (el) => `<i class="dot" style="${elVar(el)}"></i>`;
 
-  // 기둥별 오행: 천간 1 + 지지 1 + 지장간 1(나눠서)의 비중
-  const legend = `<div class="legend">${ELEMENTS.map((e) => `<span><i class="dot" style="${elVar(e)}"></i>${e} ${ELEMENT_HANJA[e]}</span>`).join("")}</div>`;
+function renderChart(A) {
+  const D = A.detail;
+  const shown = [...A.pillars].reverse(); // 전통 표기: 시·일·월·년 (오른쪽이 년주)
+  const pillarHead = ["구분", ...shown.map((p) => (p.idx === 2 ? `<span class="me-col">${p.label}</span>` : p.label))];
+  const perPillar = (label, fn) => `<tr><th scope="row">${label}</th>${shown.map((p) => `<td${p.idx === 2 ? ' class="me-col"' : ""}>${p.unknown ? "-" : fn(p)}</td>`).join("")}</tr>`;
+
+  // 1. 기본 정보
+  const basics = table(null, D.basics.map(([k, v]) => `<tr><th scope="row">${k}</th><td>${esc(v)}</td></tr>`), "kv-tbl");
+
+  // 2. 사주 원국표
+  const tile = (p, which) => {
+    if (p.unknown) return `<div class="ch empty"><span class="han">?</span></div>`;
+    const c = p[which];
+    return `<button type="button" class="ch" style="${elVar(c.el)}" ${tapAttr(() => explainChar(A, p, which))}>
+      <span class="han">${esc(c.chinese)}</span><span class="kor">${elDot(c.el)}${esc(c.name)} · ${esc(c.el)}</span></button>`;
+  };
+  const tileRow = (label, which) => `<tr><th scope="row">${label}</th>${shown.map((p) => `<td>${tile(p, which)}</td>`).join("")}</tr>`;
+  const wonguk = table(pillarHead.map((h, i) => (i === 0 ? h : `<button type="button" class="col-btn" ${tapAttr(() => explainPillar(A, shown[i - 1]))}>${h}</button>`)), [
+    perPillar("십성", (p) => (p.idx === 2 ? "<b>본인</b>" : esc(p.stem.tenGod))),
+    tileRow("천간", "stem"),
+    tileRow("지지", "branch"),
+    perPillar("십성", (p) => esc(p.branch.tenGod)),
+    perPillar("지장간", (p) => esc(p.hiddenStems.map((h) => h.name).join("·"))),
+    perPillar("12운성", (p) => esc(p.unseong || "-")),
+    perPillar("신살", (p) => unique([...p.stars, p.sinsal12].filter(Boolean)).map(esc).join("<br>") || "-"),
+  ], "wonguk");
+  const legend = `<div class="legend">${ELEMENTS.map((e) => `<span>${elDot(e)}${e} ${ELEMENT_HANJA[e]}</span>`).join("")}</div>`;
+
+  // 3. 오행 분석
+  const elementTable = table(["오행", "해당 글자", "개수", "비율", "상태"], D.elements.map((r) => `
+    <tr class="tap-row" ${tapAttr(() => explainElement(A, r))}>
+      <th scope="row">${elDot(r.el)}${r.el}(${ELEMENT_HANJA[r.el]})</th>
+      <td>${r.chars.length ? esc(r.chars.join(", ")) : "-"}</td><td>${r.count}개</td><td>${r.ratio.toFixed(1)}%</td>
+      <td><span class="status s-${esc(r.status)}">${esc(r.status)}</span></td></tr>`));
+  const maxEl = Math.max(...A.elementRows.map((r) => r.percent), 1);
+  const elementBars = A.elementRows.map((r) => `
+    <button type="button" class="bar tap" ${tapAttr(() => explainElement(A, r))}>
+      <span class="bar-name">${elDot(r.el)}${r.el} ${ELEMENT_HANJA[r.el]}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${(r.percent / maxEl) * 100}%;background:var(--el-${r.id})"></span></span>
+      <span class="bar-val">${Math.round(r.percent)}%</span></button>`).join("");
   const stacks = A.pillars.map((p) => {
     if (p.unknown) return `<div class="stack-row"><span class="stack-name">${p.label}<small>시간 모름</small></span><div class="stack empty"></div></div>`;
     const w = {};
@@ -255,55 +278,77 @@ function renderChart(A) {
     add(p.branch.el, 1);
     p.hiddenStems.forEach((h) => add(h.el, 1 / p.hiddenStems.length));
     const total = Object.values(w).reduce((a, b) => a + b, 0);
-    const segs = ELEMENTS.filter((e) => w[e])
-      .map((e) => `<span style="${elVar(e)};flex:${w[e] / total}" title="${e} ${Math.round((w[e] / total) * 100)}%"></span>`).join("");
+    const segs = ELEMENTS.filter((e) => w[e]).map((e) => `<span style="${elVar(e)};flex:${w[e] / total}" title="${e} ${Math.round((w[e] / total) * 100)}%"></span>`).join("");
     return `<button type="button" class="stack-row tap" ${tapAttr(() => explainPillar(A, p))}>
       <span class="stack-name">${p.label}<small>${esc(p.stem.name + p.branch.name)}</small></span><div class="stack">${segs}</div></button>`;
   }).join("");
+  const summary = `<div class="summary-chips">
+      <span class="pill">일간 <b>${esc(A.me.name)}(${esc(A.me.chinese)}) · ${esc(A.me.el)}</b></span>
+      <span class="pill">신강·신약 <b>${esc(A.strength || "-")}</b></span>
+      ${A.useful ? `<span class="pill">용신 <b>${esc(A.useful)}(${ELEMENT_HANJA[A.useful]})</b></span>` : ""}</div>`;
 
-  // 오행 분포
-  const maxEl = Math.max(...A.elementRows.map((r) => r.percent), 1);
-  const elementBars = A.elementRows.map((r) => `
-    <button type="button" class="bar tap" ${tapAttr(() => explainElement(A, r))}>
-      <span class="bar-name"><i class="dot" style="${elVar(r.el)}"></i>${r.el} ${ELEMENT_HANJA[r.el]}</span>
-      <span class="bar-track"><span class="bar-fill" style="width:${(r.percent / maxEl) * 100}%;background:var(--el-${r.id})"></span></span>
-      <span class="bar-val">${Math.round(r.percent)}%<small>${esc(r.desc)}</small></span>
-    </button>`).join("");
-  const elementSummary = `<div class="summary-chips">
-      <span class="pill">나의 기운 <b>${esc(A.strength || "-")}</b></span>
-      ${A.useful ? `<span class="pill">필요한 기운 <b>${esc(A.useful)} ${ELEMENT_HANJA[A.useful]}</b></span>` : ""}
-    </div>`;
-
-  // 십신 분포 (그룹별)
+  // 4. 십성 분포
+  const tenTable = table(pillarHead, [
+    perPillar("천간 십성", (p) => (p.idx === 2 ? "<b>본인</b>" : esc(p.stem.tenGod))),
+    perPillar("지지 십성", (p) => esc(p.branch.tenGod)),
+  ]);
+  const groupTable = table(["십성 분류", "개수", "키워드"], D.groups.map((g) => `
+    <tr><th scope="row">${g.group}</th><td>${g.count}개</td><td>${esc(g.keyword)}</td></tr>`), "left-last");
   const maxTG = Math.max(...A.tenGods.map((t) => t.share), 1);
-  const tenGodBars = Object.keys(GROUP_LABEL).map((g) => `
-    <p class="group-label">${GROUP_LABEL[g]} · ${Math.round(A.groupShare[g] || 0)}%</p>
-    ${A.tenGods.filter((t) => t.group === g).map((t) => `
-      <button type="button" class="bar tap" ${tapAttr(() => explainTenGod(A, t))}>
-        <span class="bar-name">${t.name}</span>
-        <span class="bar-track"><span class="bar-fill" style="width:${(t.share / maxTG) * 100}%"></span></span>
-        <span class="bar-val">${Math.round(t.share)}%</span>
-      </button>`).join("")}`).join("");
+  const tenBars = A.tenGods.filter((t) => t.share > 0).map((t) => `
+    <button type="button" class="bar tap" ${tapAttr(() => explainTenGod(A, t))}>
+      <span class="bar-name">${t.name}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${(t.share / maxTG) * 100}%"></span></span>
+      <span class="bar-val">${Math.round(t.share)}%</span></button>`).join("");
 
-  const chips = (list, good) => list.length
-    ? `<div class="chips">${list.map((s) => `<button type="button" class="chip ${good ? "good" : ""}" ${tapAttr(() => explainStar(A, s))}>${esc(s.name)}<small>${esc(s.where.join("·"))}</small></button>`).join("")}</div>`
-    : `<p class="empty-note">${good ? "사주에 드러난 귀인이 없어요." : "사주에 드러난 신살이 없어요."}</p>`;
+  // 5. 대운
+  const d0 = A.daeun[0];
+  const daeunMeta = d0 ? `<p class="meta-line">대운 방향 <b>${D.forward ? "순행 →" : "역행 ←"}</b> · 대운 시작 <b>만 ${d0.age}세 (${d0.year}년)</b></p>` : "";
+  const daeunTable = table(["나이", "대운 간지", "천간 오행", "지지 오행", "기간"], A.daeun.map((d) => `
+    <tr class="tap-row ${d.now ? "now" : ""}" ${tapAttr(() => explainDaeun(A, d))}>
+      <th scope="row">${d.age}세${d.now ? '<span class="tag on">지금</span>' : ""}</th>
+      <td>${esc(d.ganji)}(${esc(d.hanja)})</td><td>${elDot(d.stemEl)}${esc(d.stemEl)}</td><td>${elDot(d.branchEl)}${esc(d.branchEl)}</td>
+      <td>${d.year} ~ ${d.year + 9}</td></tr>`));
 
-  const daeun = `<div class="daeun">${A.daeun.map((d) => `
-      <button type="button" class="${d.now ? "now" : ""}" ${tapAttr(() => explainDaeun(A, d))}>
-        <span class="age">${d.age}세</span>
-        <span class="mini"><span style="${elVar(d.stemEl)}">${esc(d.hanja[0] || d.stem)}</span><span style="${elVar(d.branchEl)}">${esc(d.hanja[1] || d.branch)}</span></span>
-        <span class="yr">${d.year}</span>${d.now ? `<span class="now-tag">지금</span>` : ""}
-      </button>`).join("")}</div>`;
+  // 6. 신살
+  const starTable = D.stars.length ? table(["신살", "위치", "의미"], D.stars.map((x) => `
+    <tr class="tap-row" ${tapAttr(() => explainStar(A, { name: x.name, where: x.locs, info: x.info }))}>
+      <th scope="row">${esc(x.name)}${x.good ? '<span class="tag">길성</span>' : ""}</th>
+      <td>${esc(x.locs.join(", "))}</td><td class="left">${esc(x.info)}</td></tr>`), "stars-tbl") : `<p class="empty-note">사주에 드러난 신살이 없어요.</p>`;
+
+  // 7. 12운성
+  const unTable = table(pillarHead, [
+    perPillar("지지", (p) => `${esc(p.branch.name)}(${esc(p.branch.chinese)})`),
+    perPillar("12운성", (p) => `<b>${esc(p.unseong || "-")}</b>`),
+    perPillar("에너지", (p) => esc(UNSEONG_ENERGY[p.unseong] || "-")),
+  ]);
+
+  // 8. 지장간
+  const hid = Object.fromEntries(D.hidden.map((h) => [h.label, h.slots]));
+  const hidCell = (x) => (x ? `${elDot(x.el)}${esc(x.name)}(${esc(x.chinese)})<small class="sub">${esc(x.tenGod)}</small>` : "-");
+  const hidTable = table(pillarHead, ["여기", "중기", "정기"].map((k, i) => perPillar(k, (p) => hidCell(hid[p.label]?.[i]))), "hidden-tbl");
+
+  // 9. 형충회합
+  const relTable = D.relations.length ? table(["관계", "글자", "자리", "의미"], D.relations.map((r) => `
+    <tr><th scope="row">${esc(r.kind)}</th><td>${esc(r.name)}</td><td>${esc(r.where)}</td><td class="left">${esc(r.meaning)}</td></tr>`)) : "";
+
+  // 10. 적성 · 직업
+  const jobs = `<ol class="jobs">${D.jobs.map((j) => `<li><b>${esc(j.title)}</b><span>${esc(j.why)}</span></li>`).join("")}</ol>`;
 
   return [
-    card("사주팔자", palja, "누르면 해석"),
-    card("기둥별 오행", legend + `<div class="bars">${stacks}</div>`, "누르면 해석"),
-    card("오행 분포", `<div class="bars">${elementBars}</div>${elementSummary}`, "누르면 해석"),
-    card("십신 분포", `<div class="bars">${tenGodBars}</div>`, "누르면 해석"),
-    card("귀인", chips(A.guiin, true), "누르면 해석"),
-    card("신살", chips(A.sinsal, false), "누르면 해석"),
-    card("대운", daeun + `<p class="footnote">10년마다 바뀌는 큰 흐름이에요. 카드를 누르면 그 시기의 풀이를 볼 수 있어요.</p>`),
+    card("기본 정보", basics),
+    card("사주 원국표", `<p class="meta-line">오른쪽(년주)에서 왼쪽(시주)으로 읽어요. 글자를 누르면 뜻을 알려 드려요.</p>${wonguk}${legend}` + insight(D.wonguk, "원국 요약"), "누르면 해석"),
+    card("오행 분석", elementTable + summary +
+      `<p class="sub-head">오행의 힘 (지장간·계절까지 반영)</p><div class="bars">${elementBars}</div>` +
+      `<p class="sub-head">기둥별 오행</p><div class="bars">${stacks}</div>` + insight(D.elementText), "누르면 해석"),
+    card("십성 분포", tenTable + `<p class="sub-head">십성 요약</p>` + groupTable +
+      `<p class="sub-head">십성별 비중</p><div class="bars">${tenBars}</div>` + insight(D.tenText), "누르면 해석"),
+    card("대운", daeunMeta + daeunTable + insight(D.daeunText, "지금의 대운"), "누르면 해석"),
+    card("신살 분석", starTable + insight(D.starText, "신살 종합 해석"), "누르면 해석"),
+    card("12운성", unTable + insight(D.unseongText, "일주 운성 해석")),
+    card("지장간", `<p class="meta-line">지지 속에 숨어 있는 기운이에요. 겉으로 드러나지 않지만 필요할 때 꺼내 쓰는 힘이에요.</p>` + hidTable + insight(D.hiddenText, "숨은 기운 보완")),
+    card("형충회합", (relTable || `<p class="empty-note">글자 사이에 합이나 충이 없어요.</p>`) + insight(D.relText)),
+    card("적성 · 직업", `<p class="sub-head" style="margin-top:0">추천 직업군</p>` + jobs + insight(D.careerText, "커리어 조언")),
   ].join("");
 }
 
@@ -356,8 +401,15 @@ function renderYear(A) {
       </dl>
     </div>`).join("");
 
+  const K = A.detail.yearKeys;
+  const keys = K ? `<p class="sub-head">운세 키워드</p>` + table(null, [
+      `<tr><th scope="row">총운</th><td class="left" colspan="2"><b>${esc(K.total)}</b></td></tr>`,
+      ...K.rows.map((r) => `<tr class="tap-row" ${tapAttr(() => ({ title: `${r.title} · ${r.value}점`, body: [indexLabel(r.value), ...Y.fields.find((f) => f.title === r.title).text] }))}>
+        <th scope="row">${esc(r.title)}</th><td class="rate">${"★".repeat(r.stars)}<span class="off">${"★".repeat(5 - r.stars)}</span></td><td class="left">${esc(r.line)}</td></tr>`),
+    ], "keys-tbl") + insight(K.advice, `${Y.year}년 조언`) : "";
+
   return [
-    card(`${Y.year}년 운세`, hero),
+    card(`${Y.year}년 세운 · ${Y.ganji}(${Y.hanja})년`, hero + keys),
     card("분야별 지수", `<div class="bars">${fields}</div>`, "누르면 풀이"),
     card("월별 흐름", monthChart +
       `<div class="col-legend"><span>좋은 달 <b>${Y.months.filter((m) => m.value === best).map(mName).join(", ")}</b></span>` +
