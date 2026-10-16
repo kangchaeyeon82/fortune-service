@@ -84,6 +84,7 @@
 | **Firecrawl** (`api.firecrawl.dev`) | 포스텔러 첫 화면을 수집하는 데만 사용. 웹사이트는 사용하지 않음 | `FIRECRAWL_API_KEY` 필요 (`.env`) | `crawler/forceteller_crawl.py` |
 | **GitHub Pages + GitHub Actions** | `main`에 push하면 `web` 폴더를 자동으로 배포 | 무료 (공개 저장소) | `.github/workflows/pages.yml` |
 | **Google Flow (나노 바나나 2.1)** | 마법진 이미지 생성 (`web/img/magic-circle.webp`) | 구글 계정 | 이미지를 만들 때만 사용, 사이트 동작과는 무관 |
+| **raw.githack.com** | 특정 커밋의 화면을 브라우저로 열어 보기 (아래 '특정 커밋의 화면 보기') | 키 없음 · 무료 | 사이트 동작과는 무관 |
 | **jsDelivr CDN · Pretendard 글꼴** | 화면 글꼴 | 키 없음 · 무료 | `web/index.html` |
 | **FastAPI · Uvicorn · httpx** (파이썬 라이브러리) | 내 컴퓨터에서 서버로 실행할 때만 사용 | 무료 | `server/main.py`, `requirements.txt` |
 
@@ -142,6 +143,30 @@ fortune-service/
 | 발표 준비 | 남음 |
 
 자세한 내용은 [`docs/PLAN.md`](docs/PLAN.md)에 있습니다.
+
+## 특정 커밋의 화면 보기
+
+`/v1/` ~ `/v5/`에 없는 커밋도 브라우저 주소만으로 그때의 화면을 열어 볼 수 있습니다. 설치는 필요 없습니다.
+
+1. [커밋 목록](https://github.com/kangchaeyeon82/fortune-service/commits/main)에서 보고 싶은 커밋의 번호(예: `7c6a7e0`)를 복사합니다.
+2. 아래 주소의 `커밋번호` 자리에 붙여 넣고 엽니다.
+
+   ```
+   https://raw.githack.com/kangchaeyeon82/fortune-service/커밋번호/web/index.html
+   ```
+
+   예: https://raw.githack.com/kangchaeyeon82/fortune-service/7c6a7e0/web/index.html
+
+커밋에 따라 웹사이트 폴더 이름이 다릅니다.
+
+| 커밋 | 주소 끝부분 |
+|---|---|
+| `8dcf405`(폴더 구조 정리, 10/16) 이후 | `/web/index.html` |
+| `c685c8a` ~ `064b865` (10/12 ~ 10/15) | `/app/static/index.html` |
+| `86ef623` (첫 커밋) | 화면은 열리지만 결과는 나오지 않습니다. 내 컴퓨터 서버가 있어야 동작하던 버전입니다. |
+
+- [raw.githack.com](https://raw.githack.com)은 GitHub에 올라간 파일을 웹페이지로 보여 주는 무료 외부 서비스입니다. 공개 저장소라 로그인은 필요 없습니다. 처음 열 때 몇 초 걸릴 수 있습니다.
+- 코드가 어떻게 바뀌었는지만 보려면 커밋 목록에서 커밋을 누르세요.
 
 ## 내 컴퓨터에서 실행하기 (선택)
 
