@@ -5,3 +5,6 @@ node_modules/
 
 # 개인 정보가 담긴 풀이 예시 (내 컴퓨터에만 보관)
 docs/references/saju-explain.md
+
+# GitHub Pages 빌드 결과 (scripts/build_pages.sh)
+_site/

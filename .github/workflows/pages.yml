@@ -1,4 +1,4 @@
-# main 브랜치에 push하면 web 폴더를 GitHub Pages로 배포
+# main 브랜치에 push하면 web 폴더(지금 버전)와 versions.tsv의 이전 버전(/v1/ …)을 GitHub Pages로 배포
 name: Deploy to GitHub Pages
 
 on:
@@ -23,9 +23,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 이전 버전을 꺼내려면 전체 기록이 필요
       - uses: actions/configure-pages@v5
+      - run: bash scripts/build_pages.sh _site
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

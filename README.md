@@ -6,6 +6,8 @@
 
 설치 없이 브라우저에서 바로 쓸 수 있고, 휴대폰 화면도 지원합니다.
 
+이전 버전 보기 → https://kangchaeyeon82.github.io/fortune-service/versions/ (사이트가 바뀌어 온 과정을 `v1/` ~ `v5/` 주소로 볼 수 있어요)
+
 ## 사용 방법
 
 1. 첫 화면에서 정보를 입력합니다. (포스텔러 만세력과 같은 방식)
@@ -118,6 +120,8 @@ fortune-service/
 │       └── screenshots/        #   디자인 분위기 사진
 ├── data/raw/                   # 수집 결과 저장 위치 (GitHub에 올리지 않음)
 ├── .github/workflows/          # main에 push하면 GitHub Pages 자동 배포
+├── scripts/build_pages.sh      # 배포용 폴더 만들기 (지금 버전 + 이전 버전)
+├── versions.tsv                # 사이트 주소로 함께 올릴 이전 버전 목록
 ├── .env.example
 ├── requirements.txt
 └── README.md
@@ -133,6 +137,8 @@ fortune-service/
 | 디자인 교체 (검은 배경 · 흰색 메인 · 별 · 마법진) | 완료 |
 | 입력 방식을 포스텔러처럼 (숫자 · 도시 직접 입력) | 완료 |
 | 풀이 방식을 saju-explain 형식으로 (표 → 상태 → 종합 해석) | 완료 |
+| 렉 줄이기 (블러 효과 정리) | 완료 |
+| 이전 버전을 주소로 보기 (`/versions/`) | 완료 |
 | 발표 준비 | 남음 |
 
 자세한 내용은 [`docs/PLAN.md`](docs/PLAN.md)에 있습니다.
@@ -158,7 +164,12 @@ python crawler/forceteller_crawl.py --birthday 1990-01-01 --time 12:00 --gender 
 
 ## 배포
 
-`main` 브랜치에 push하면 GitHub Actions가 `web` 폴더를 GitHub Pages에 자동으로 배포합니다. 보통 30초 안에 끝납니다.
+`main` 브랜치에 push하면 GitHub Actions가 GitHub Pages에 자동으로 배포합니다. 보통 30초 안에 끝납니다.
+
+- 사이트 첫 주소(`/`)에는 지금의 `web` 폴더가 올라갑니다.
+- `versions.tsv`에 적힌 이전 버전은 git 기록에서 그 커밋의 웹사이트 폴더를 꺼내 `/v1/`, `/v2/` … 주소로 함께 올립니다. 목록 페이지는 `/versions/`입니다.
+- 새 버전을 목록에 남기고 싶으면 `versions.tsv`에 한 줄(주소 · 커밋 · 폴더 · 날짜 · 제목 · 설명)을 추가하면 됩니다.
+- 배포용 폴더는 `scripts/build_pages.sh`가 만듭니다. 내 컴퓨터에서 `bash scripts/build_pages.sh`로 미리 만들어 볼 수 있습니다(`_site/`, GitHub에는 올리지 않음).
 
 ## 알아 둘 점
 
