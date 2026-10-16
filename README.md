@@ -4,7 +4,7 @@
 
 **바로 사용하기 → https://kangchaeyeon82.github.io/fortune-service/**
 
-설치 없이 브라우저에서 바로 쓸 수 있고, 휴대폰 화면과 다크 모드도 지원합니다.
+설치 없이 브라우저에서 바로 쓸 수 있고, 휴대폰 화면도 지원합니다. 검은 밤하늘에 작은 별이 은은하게 깜빡이고, 첫 화면의 하얀 마법진이 천천히 회전합니다.
 
 ## 무엇을 볼 수 있나요
 
@@ -33,6 +33,7 @@
 | **포스텔러 만세력 API** (`api.forceteller.com`) | 사주팔자 · 오행·십신 · 신강신약 · 용신 · 대운·연운·월운 · 신살, 태어난 곳(도시) 검색, 날짜 검증 | 키 없음 · 무료 | `web/js/api.js`, `server/forceteller.py`, `crawler/` |
 | **Firecrawl** (`api.firecrawl.dev`) | 포스텔러 첫 화면을 수집하는 데만 사용. 웹사이트는 사용하지 않음 | `FIRECRAWL_API_KEY` 필요 (`.env`) | `crawler/forceteller_crawl.py` |
 | **GitHub Pages + GitHub Actions** | `main`에 push하면 `web` 폴더를 자동으로 배포 | 무료 (공개 저장소) | `.github/workflows/pages.yml` |
+| **Google Flow (나노 바나나 2.1)** | 첫 화면·로딩 화면의 마법진 이미지 생성 (`web/img/magic-circle.webp`) | 구글 계정 (PLUS 플랜) | 이미지 만들 때만 사용, 사이트 동작과는 무관 |
 | **jsDelivr CDN · Pretendard 글꼴** | 화면 글꼴 | 키 없음 · 무료 | `web/index.html` |
 | **FastAPI · Uvicorn · httpx** (파이썬 라이브러리) | 내 컴퓨터에서 서버로 실행할 때만 사용 | 무료 | `server/main.py`, `requirements.txt` |
 
@@ -46,10 +47,12 @@ fortune-service/
 ├── web/                     # 웹사이트 (GitHub Pages로 배포되는 폴더)
 │   ├── index.html
 │   ├── css/style.css
+│   ├── img/magic-circle.webp #   마법진 (Google Flow로 생성, 배경을 투명하게 처리)
 │   ├── js/
 │   │   ├── api.js           #   포스텔러 호출 · 도시 검색 · 날짜 검증 · 일진 계산
 │   │   ├── interpret.js     #   풀이 엔진: 만세력 데이터 → 점수 · 해석 문장
-│   │   └── app.js           #   입력 폼 · 탭 3개 · 해석 창
+│   │   ├── app.js           #   입력 폼 · 탭 3개 · 해석 창
+│   │   └── stars.js         #   배경의 작은 별
 │   └── data/sample.json     #   '예시로 둘러보기' 데이터
 ├── server/                  # 내 컴퓨터에서 실행할 때 쓰는 서버 (선택)
 │   ├── main.py              #   FastAPI 서버

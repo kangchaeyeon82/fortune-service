@@ -113,7 +113,7 @@ async function resolveCity() {
   return {};
 }
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   if (!f.name.value.trim()) return showError("이름을 입력해 주세요.");
   const birthday = readBirthday();
@@ -121,19 +121,21 @@ form.addEventListener("submit", async (e) => {
   const time = readBirthtime();
   if (time.error) return showError(time.error);
   closeCityResults();
-  const city = await resolveCity();
-  if (city.error) return showError(city.error);
-  const body = {
-    name: f.name.value.trim(),
-    gender: f.gender.value,
-    birthday: birthday.value,
-    time: time.value,
-    lunar: f.calendar.value !== "S",
-    leap_month: f.calendar.value === "L",
-    location_id: +f.location_id.value,
-    location_name: f.location_name.value,
-  };
-  load(() => getFortune(body)); // api.js
+  // 도시 확인부터 로딩 화면(마법진) 안에서 진행
+  load(async () => {
+    const city = await resolveCity();
+    if (city.error) throw new Error(city.error);
+    return getFortune({ // api.js
+      name: f.name.value.trim(),
+      gender: f.gender.value,
+      birthday: birthday.value,
+      time: time.value,
+      lunar: f.calendar.value !== "S",
+      leap_month: f.calendar.value === "L",
+      location_id: +f.location_id.value,
+      location_name: f.location_name.value,
+    });
+  });
 });
 $("#sample-btn").addEventListener("click", () => load(getSample));
 
@@ -142,11 +144,15 @@ async function load(request) {
   showError("");
   btn.disabled = true;
   btn.textContent = "풀이하는 중…";
+  $("#loading").hidden = false; // 마법진이 빠르게 도는 로딩 화면
   try {
-    render(await request());
+    // 너무 빨리 끝나면 깜빡이기만 하므로 마법진을 최소 0.9초는 보여 준다
+    const [data] = await Promise.all([request(), new Promise((r) => setTimeout(r, 900))]);
+    render(data);
   } catch (err) {
     showError(err.message || "결과를 불러오지 못했어요.");
   } finally {
+    $("#loading").hidden = true;
     btn.disabled = false;
     btn.textContent = "사주 풀이 보기";
   }
