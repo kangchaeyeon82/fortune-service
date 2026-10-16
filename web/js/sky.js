@@ -11,11 +11,12 @@
   // ---------- 작은 별 ----------
   const sky = document.querySelector(".stars");
   if (sky) {
-    const W = 2000, H = 1400;
-    const count = Math.round(Math.min(innerWidth * innerHeight, W * H) / 8000);
-    for (let g = 0; g < 6; g++) {
+    // 화면 크기만큼만 그린다 (크게 그리면 묶음마다 큰 그래픽 메모리를 차지해 느려짐)
+    const W = Math.min(innerWidth, 2000), H = Math.min(innerHeight, 1400);
+    const count = Math.round((W * H) / 8000);
+    for (let g = 0; g < 3; g++) {
       const dots = [];
-      for (let i = 0; i < count / 6; i++) {
+      for (let i = 0; i < count / 3; i++) {
         const big = Math.random() < 0.12;
         dots.push(`${Math.round(rand(0, W))}px ${Math.round(rand(0, H))}px 0 ${big ? "0.6px" : "0"} rgb(255 255 255 / ${rand(0.3, 0.9).toFixed(2)})`);
       }
@@ -110,14 +111,14 @@
     let last = performance.now();
     const frame = (now) => {
       const dt = Math.min(0.05, (now - last) / 1000); last = now;
-      if (canvas.offsetParent !== null && !document.hidden) { // 화면에 보일 때만 그림
-        ctx.clearRect(0, 0, w, h);
-        parts.forEach((p, i) => {
-          p.age += dt;
-          if (p.age > p.life) parts[i] = p = spawn(false);
-          draw(p);
-        });
-      }
+      // 화면에 안 보이면(결과 화면·다른 탭) 그리지 않고 0.5초마다 다시 보이는지만 확인
+      if (canvas.offsetParent === null || document.hidden) return setTimeout(() => { last = performance.now(); requestAnimationFrame(frame); }, 500);
+      ctx.clearRect(0, 0, w, h);
+      parts.forEach((p, i) => {
+        p.age += dt;
+        if (p.age > p.life) parts[i] = p = spawn(false);
+        draw(p);
+      });
       requestAnimationFrame(frame);
     };
     if (reduce) { parts.forEach(draw); } else requestAnimationFrame(frame);
