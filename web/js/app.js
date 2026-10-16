@@ -7,73 +7,127 @@ const pad = (n) => String(n).padStart(2, "0");
 const elVar = (el) => `--el:var(--el-${ELEMENTS.indexOf(el)})`;
 
 // ================= 입력 폼 =================
+// 포스텔러처럼 숫자를 직접 입력한다: 생년월일 19900101 -> 1990/01/01, 시각 1230 -> 12:30
 const form = $("#fortune-form");
 const f = form.elements;
-const options = (from, to, label, selected) =>
-  Array.from({ length: to - from + 1 }, (_, i) => from + i)
-    .map((v) => `<option value="${v}"${v === selected ? " selected" : ""}>${label(v)}</option>`)
-    .join("");
+const digits = (v, n) => v.replace(/\D/g, "").slice(0, n);
+const formatDate = (d) => [d.slice(0, 4), d.slice(4, 6), d.slice(6, 8)].filter(Boolean).join("/");
+const formatTime = (d) => [d.slice(0, 2), d.slice(2, 4)].filter(Boolean).join(":");
 
-const thisYear = new Date().getFullYear();
-f.year.innerHTML = `<option value="">년</option>` +
-  Array.from({ length: thisYear - 1899 }, (_, i) => thisYear - i).map((v) => `<option value="${v}">${v}년</option>`).join("");
-f.month.innerHTML = `<option value="">월</option>` + options(1, 12, (v) => `${v}월`);
-f.hour.innerHTML = options(0, 23, (v) => `${v < 12 ? "오전" : "오후"} ${v % 12 || 12}시`, 12);
-f.minute.innerHTML = options(0, 59, (v) => `${pad(v)}분`, 0);
+f.birthday.addEventListener("input", () => {
+  const d = digits(f.birthday.value, 8);
+  f.birthday.value = formatDate(d);
+  if (d.length === 8 && !f.unknown_time.checked) f.birthtime.focus();
+});
+f.birthtime.addEventListener("input", () => (f.birthtime.value = formatTime(digits(f.birthtime.value, 4))));
+f.unknown_time.addEventListener("change", () => {
+  f.birthtime.disabled = f.unknown_time.checked;
+  if (f.unknown_time.checked) f.birthtime.value = "";
+});
 
-function refreshDays() {
-  // 양력은 그 달의 실제 일수, 음력은 최대 30일 (음력 2월 30일 같은 날도 고를 수 있게)
-  const y = +f.year.value || 2000, m = +f.month.value || 1;
-  const max = f.calendar.value === "S" ? new Date(y, m, 0).getDate() : 30;
-  const keep = +f.day.value;
-  f.day.innerHTML = `<option value="">일</option>` + options(1, max, (v) => `${v}일`, keep <= max ? keep : 0);
+// 입력값 검사 -> 문제가 있으면 한국어 메시지
+function readBirthday() {
+  const d = digits(f.birthday.value, 8);
+  if (d.length < 8) return { error: "생년월일을 숫자 8자리로 입력해 주세요. 예) 19900101" };
+  const y = +d.slice(0, 4), m = +d.slice(4, 6), day = +d.slice(6, 8);
+  const thisYear = new Date().getFullYear();
+  if (y < 1900 || y > thisYear) return { error: `태어난 해는 1900년부터 ${thisYear}년 사이로 입력해 주세요.` };
+  if (m < 1 || m > 12) return { error: "태어난 월은 01부터 12 사이로 입력해 주세요." };
+  const max = f.calendar.value === "S" ? new Date(y, m, 0).getDate() : 30; // 음력은 최대 30일
+  if (day < 1 || day > max) return { error: `${m}월은 ${max}일까지 있어요. 날짜를 확인해 주세요.` };
+  if (f.calendar.value === "S" && new Date(y, m - 1, day) > new Date()) return { error: "오늘 이후 날짜는 입력할 수 없어요." };
+  return { value: `${y}-${pad(m)}-${pad(day)}` };
 }
-["year", "month", "calendar"].forEach((n) => f[n].addEventListener("change", refreshDays));
-refreshDays();
-f.unknown_time.addEventListener("change", () => (f.hour.disabled = f.minute.disabled = f.unknown_time.checked));
+function readBirthtime() {
+  if (f.unknown_time.checked) return { value: null };
+  const d = digits(f.birthtime.value, 4);
+  if (d.length < 4) return { error: "태어난 시각을 숫자 4자리로 입력해 주세요. 예) 0930, 1430 · 모르면 ‘시간 모름’을 눌러 주세요." };
+  const h = +d.slice(0, 2), mi = +d.slice(2, 4);
+  if (h > 23 || mi > 59) return { error: "시각은 00:00부터 23:59 사이로 입력해 주세요." };
+  return { value: `${pad(h)}:${pad(mi)}` };
+}
 
-// 태어난 곳 검색 (포스텔러 도시 검색 -> GeoNames ID)
+// 도시: 직접 입력 -> 입력하는 동안 포스텔러 도시 검색 결과를 아래에 보여 줌 (GeoNames ID)
 const cityInput = $("#city-input");
 const cityResults = $("#city-results");
-let cityTimer;
+let cityTimer, cityList = [];
+function setCity(c) {
+  f.location_id.value = c ? c.id : "";
+  f.location_name.value = c ? c.name : "";
+  if (c) cityInput.value = c.name;
+}
+function closeCityResults() {
+  cityResults.hidden = true;
+  cityInput.setAttribute("aria-expanded", "false");
+}
 async function showCityResults(q) {
-  let list = [];
   try {
-    list = await searchCities(q); // api.js
-  } catch {}
-  cityResults.innerHTML = list.length
-    ? list.map((c) => `<li><button type="button" data-id="${c.id}" data-name="${esc(c.name)}">${esc(c.name)}</button></li>`).join("")
-    : `<li class="empty">검색 결과가 없어요. 시·군·구 이름으로 검색해 보세요.</li>`;
+    cityList = q ? await searchCities(q) : []; // api.js
+  } catch {
+    cityList = [];
+  }
+  if (q !== cityInput.value.trim()) return; // 그사이 입력이 바뀌었으면 버림
+  if (!q) return closeCityResults();
+  cityResults.innerHTML = cityList.length
+    ? cityList.map((c, i) => `<li><button type="button" role="option" data-i="${i}">${esc(c.name)}</button></li>`).join("")
+    : `<li class="empty">검색 결과가 없어요. 시·군·구 이름이나 나라의 수도로 입력해 보세요.</li>`;
   cityResults.hidden = false;
+  cityInput.setAttribute("aria-expanded", "true");
 }
 cityInput.addEventListener("input", () => {
+  setCity(null); // 글자를 고치면 다시 골라야 함
   clearTimeout(cityTimer);
   const q = cityInput.value.trim();
-  cityTimer = setTimeout(() => showCityResults(q), q ? 300 : 0);
+  cityTimer = setTimeout(() => showCityResults(q), 250);
 });
-cityInput.addEventListener("focus", () => !cityInput.value.trim() && showCityResults(""));
+cityInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !cityResults.hidden && cityList.length) {
+    e.preventDefault();
+    setCity(cityList[0]);
+    closeCityResults();
+  } else if (e.key === "Escape") closeCityResults();
+});
 cityResults.addEventListener("click", (e) => {
-  const b = e.target.closest("button[data-id]");
+  const b = e.target.closest("button[data-i]");
   if (!b) return;
-  f.location_id.value = b.dataset.id;
-  f.location_name.value = b.dataset.name;
-  $("#city-picked").textContent = b.dataset.name;
-  cityInput.value = "";
-  cityResults.hidden = true;
+  setCity(cityList[+b.dataset.i]);
+  closeCityResults();
 });
 document.addEventListener("click", (e) => {
-  if (!e.target.closest(".city-field")) cityResults.hidden = true;
+  if (!e.target.closest(".city-field")) closeCityResults();
 });
 
-form.addEventListener("submit", (e) => {
+// 목록에서 고르지 않고 입력만 했으면 검색 결과 첫 번째 도시로 정한다
+async function resolveCity() {
+  if (f.location_id.value) return {};
+  const q = cityInput.value.trim();
+  if (!q) return { error: "태어난 도시를 입력해 주세요. 모르면 ‘서울특별시’를 입력하세요." };
+  let list = [];
+  try {
+    list = await searchCities(q);
+  } catch {
+    return { error: "도시를 검색하지 못했어요. 인터넷 연결을 확인해 주세요." };
+  }
+  if (!list.length) return { error: `‘${q}’에 해당하는 도시를 찾지 못했어요. 시·군·구 이름이나 나라의 수도로 입력해 주세요.` };
+  setCity(list[0]);
+  return {};
+}
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!f.name.value.trim()) return showError("이름을 입력해 주세요.");
-  if (!f.year.value || !f.month.value || !f.day.value) return showError("생년월일을 모두 선택해 주세요.");
+  const birthday = readBirthday();
+  if (birthday.error) return showError(birthday.error);
+  const time = readBirthtime();
+  if (time.error) return showError(time.error);
+  closeCityResults();
+  const city = await resolveCity();
+  if (city.error) return showError(city.error);
   const body = {
     name: f.name.value.trim(),
     gender: f.gender.value,
-    birthday: `${f.year.value}-${pad(f.month.value)}-${pad(f.day.value)}`,
-    time: f.unknown_time.checked ? null : `${pad(f.hour.value)}:${pad(f.minute.value)}`,
+    birthday: birthday.value,
+    time: time.value,
     lunar: f.calendar.value !== "S",
     leap_month: f.calendar.value === "L",
     location_id: +f.location_id.value,

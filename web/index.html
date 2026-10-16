@@ -23,47 +23,38 @@
       <form id="fortune-form" class="form-card" novalidate>
         <label class="field">
           <span class="label">이름</span>
-          <input name="name" maxlength="20" placeholder="이름을 입력하세요" autocomplete="off">
+          <input name="name" maxlength="12" placeholder="최대 12글자 이내로 입력하세요" autocomplete="off">
         </label>
 
         <fieldset class="field">
           <legend class="label">성별</legend>
           <div class="seg">
-            <label><input type="radio" name="gender" value="F" checked><span>여성</span></label>
-            <label><input type="radio" name="gender" value="M"><span>남성</span></label>
+            <label><input type="radio" name="gender" value="F" checked><span>여자</span></label>
+            <label><input type="radio" name="gender" value="M"><span>남자</span></label>
           </div>
         </fieldset>
 
         <fieldset class="field">
-          <legend class="label">생년월일</legend>
-          <div class="date-row">
+          <legend class="label">생년월일시</legend>
+          <div class="birth-row">
             <select name="calendar" aria-label="달력">
               <option value="S">양력</option>
               <option value="M">음력</option>
-              <option value="L">음력 윤달</option>
+              <option value="L">음력(윤달)</option>
             </select>
-            <select name="year" aria-label="년"></select>
-            <select name="month" aria-label="월"></select>
-            <select name="day" aria-label="일"></select>
+            <input name="birthday" inputmode="numeric" maxlength="10" placeholder="1990/01/01" autocomplete="off" aria-label="생년월일 (숫자 8자리)">
+            <input name="birthtime" inputmode="numeric" maxlength="5" placeholder="12:30" autocomplete="off" aria-label="태어난 시각 (숫자 4자리)">
           </div>
-        </fieldset>
-
-        <fieldset class="field">
-          <legend class="label">태어난 시각</legend>
-          <div class="time-row">
-            <select name="hour" aria-label="시"></select>
-            <select name="minute" aria-label="분"></select>
-          </div>
-          <label class="check"><input type="checkbox" name="unknown_time"><span>시간을 몰라요</span></label>
+          <label class="check"><input type="checkbox" name="unknown_time"><span>시간 모름</span></label>
         </fieldset>
 
         <div class="field city-field">
-          <label class="label" for="city-input">태어난 곳</label>
-          <input id="city-input" type="search" autocomplete="off" placeholder="시·군·구 이름으로 검색">
+          <label class="label" for="city-input">도시</label>
+          <input id="city-input" name="city" autocomplete="off" placeholder="태어난 도시를 입력하세요" role="combobox" aria-expanded="false" aria-controls="city-results">
           <ul id="city-results" class="city-results" role="listbox" hidden></ul>
-          <p class="hint">선택됨 · <b id="city-picked">서울특별시</b></p>
-          <input type="hidden" name="location_id" value="1835848">
-          <input type="hidden" name="location_name" value="서울특별시">
+          <p class="hint">태어난 도시를 모르면 ‘서울특별시’ 또는 태어난 나라의 수도를 입력하세요.</p>
+          <input type="hidden" name="location_id" value="">
+          <input type="hidden" name="location_name" value="">
         </div>
 
         <p id="form-error" class="error" role="alert" hidden></p>
